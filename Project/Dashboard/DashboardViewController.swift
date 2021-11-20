@@ -22,9 +22,10 @@ class DashboardViewController: UIViewController {
     }
     override func viewDidLoad() {
     super.viewDidLoad()
-
+        showLoder()
         let worker = DashboardManager()
         worker.getValues { v in
+            self.stopLoader()
             self.setChart(dataPoints: v)
         }
   }

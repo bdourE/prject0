@@ -39,7 +39,9 @@ final class FiltersTableController: UIViewController, UITableViewDelegate, UITab
     }
 
     func getFilters(){
+        showLoder()
         netowrkManager.loadData(.getFilters, auth_token: nil) { reponse, status in
+            self.stopLoader()
             if status == 200 , let reponse = reponse{
                 do {
                     let data = try? reponse.rawData()
@@ -72,7 +74,7 @@ final class FiltersTableController: UIViewController, UITableViewDelegate, UITab
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 130
+        return 50
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

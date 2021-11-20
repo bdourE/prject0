@@ -43,7 +43,9 @@ final class IncidentsListViewController: UIViewController, UITableViewDelegate, 
     }
 
     func getIncidints(){
+        showLoder()
         interactor.getIncidentsList { incidents in
+            self.stopLoader()
             self.incidents = incidents
             self.tableView.reloadData()
         }

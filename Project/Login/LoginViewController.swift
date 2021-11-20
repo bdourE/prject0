@@ -104,11 +104,11 @@ final class LoginViewController: UIViewController {
         
         enterEmailLabel.text = viewModel.enterEmailText
 
-        emailTextField.placeholder = "a@a.com"
+        emailTextField.placeholder = "Email"
         emailTextField.delegate = self
 
 
-        oTPTextField.placeholder = "1234"
+        oTPTextField.placeholder = "OTP"
         oTPTextField.textField.textContentType = .oneTimeCode
         oTPTextField.delegate = self
         oTPTextField.isHidden = true
@@ -122,12 +122,6 @@ final class LoginViewController: UIViewController {
     func enableLoginButton(){
         loginButton.backgroundColor = .purple
         loginButton.isEnabled = true
-    }
-
-    func presentErrorMessege(){
-        let alert = UIAlertController(title: "Alert", message: "Somthing wrong", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "ok", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
     }
 
 }

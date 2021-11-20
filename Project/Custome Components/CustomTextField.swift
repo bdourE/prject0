@@ -27,6 +27,7 @@ public class CustomTextField: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.sizeToFit()
+        label.font = UIFont.systemFont(ofSize: 12)
         label.alpha = 0
         label.text = " "
         label.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)

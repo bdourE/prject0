@@ -11,8 +11,12 @@ import Foundation
 protocol IncidentsListWorkable {
     func getIncidentsList(_ reqResponse: @escaping ([Incident]) -> Void)
 }
+protocol submitWorkable {
+    func submitIncident(data:[String: AnyObject], _ reqResponse: @escaping (Bool) -> Void)
+}
 
-final class IncidentsListWorker: IncidentsListWorkable {
+
+final class IncidentsListWorker: IncidentsListWorkable,submitWorkable {
 
     private let networkManager = NetworkManager.sharedInstance
 
@@ -32,4 +36,12 @@ final class IncidentsListWorker: IncidentsListWorkable {
             }}
     }
 
+    func submitIncident(data:[String: AnyObject], _ reqResponse: @escaping (Bool) -> Void){
+        networkManager.loadData(.getIncidents, auth_token: nil) { reponse, status in
+            if status == 200 {
+                    reqResponse(true)
+            } else {
+                reqResponse(false)
+            }
+        }}
 }

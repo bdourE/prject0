@@ -35,7 +35,8 @@ final class Router: LoginRoutable, IncidentsListRoutable , FiltersRoutable {
     }
 
     func goToList(choosenFilters: [Int]) {
-
+        let vc = IncidentsListSceneComposer.makeScene(router: self)
+        present(viewController: vc)
     }
 
     func goToDashboardTapped(){
@@ -43,7 +44,19 @@ final class Router: LoginRoutable, IncidentsListRoutable , FiltersRoutable {
         present(viewController: vc)
     }
 
+    @objc func goToSubmitIncedint(){
+        let worker = IncidentsListWorker()
+        let vc = SubmitInsidentsViewController(worker: worker)
+        navigationController.definesPresentationContext = true
+        vc.modalPresentationStyle = .overCurrentContext
+        navigationController.present(vc, animated: true, completion: nil)
+    }
+
     private func present(viewController: UIViewController) {
+        if viewController.isKind(of: IncidentsListViewController.self) {
+           let Submit = UIBarButtonItem(title: "Submit", style: .done, target: self, action: #selector(goToSubmitIncedint))
+            viewController.navigationItem.rightBarButtonItem = Submit
+        }
         navigationController.navigationBar.topItem?.backButtonTitle = ""
         navigationController.pushViewController(viewController, animated: true)
     }
@@ -51,4 +64,6 @@ final class Router: LoginRoutable, IncidentsListRoutable , FiltersRoutable {
     func endFlow() {
             navigationController.dismiss(animated: true, completion: nil)
     }
+
+
 }

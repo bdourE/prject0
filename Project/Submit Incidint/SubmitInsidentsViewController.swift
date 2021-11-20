@@ -39,7 +39,17 @@ class SubmitInsidentsViewController: UIViewController{
 
     @IBAction func submitTapped() {
         showLoder()
-        worker.submitIncident(data: ["":""]) { success in
+        let id = Int(typeField.text)
+        let lat = Double(latField.text)
+        let long = Double(longField.text)
+
+        let params = [
+            "description": descriptionField.text,
+            "typeId": id,
+            "latitude": lat,
+            "longitude": long,
+        ] as [String: AnyObject]? ?? [:]
+        worker.submitIncident(data: params) { success in
             self.stopLoader()
             if success {
                 self.dismiss(animated: true, completion: nil)

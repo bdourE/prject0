@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 enum APIAction {
-    case login, varifyOTP, getIncidents,getFilters,getDashboardValues
+    case login, varifyOTP, getIncidents,getFilters,getDashboardValues, submitIncident
 }
 
 enum RequestsMethods {
@@ -39,6 +39,8 @@ enum APIRouter {
             return (HTTPMethod.get, base_url + "/types")
         case .getDashboardValues:
             return (HTTPMethod.get, base_url + "/dashboard")
+        case .submitIncident:
+            return (HTTPMethod.post, base_url + "/incident")
         }
     }
 }
