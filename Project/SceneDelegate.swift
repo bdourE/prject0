@@ -1,8 +1,7 @@
-//
 //  SceneDelegate.swift
-//  Project
+//  x
 //
-//  Created by Bdour Brahim Alharbi on 20/11/2021.
+//  Created by Bdour Brahim Alharbi on 25/10/2020.
 //
 
 import UIKit
